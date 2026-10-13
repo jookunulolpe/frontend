@@ -9,7 +9,7 @@ const priorityInput = document.querySelector('#priorityInput');
 // 1. ปรับเปลี่ยนโค้ดฟังก์ชัน addTask ให้ส่งข้อมูลไป Backend (POST)
 const addTask = async (title, priority) => {
   try {
-    await fetch('http://127.0.0.1:3000/tasks', {
+    await fetch('https://cpe-task-backend.onrender.com/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json' // ต้องบอกเซิร์ฟเวอร์ว่าส่ง JSON ไป
@@ -26,7 +26,7 @@ const addTask = async (title, priority) => {
 // 2. ปรับเปลี่ยนโค้ดฟังก์ชัน toggleTaskStatus ให้เปลี่ยนสถานะที่ Backend (PUT)
 const toggleTaskStatus = async (id) => {
   try {
-    await fetch(`http://127.0.0.1:3000/tasks/${id}`, {
+    await fetch(`https://cpe-task-backend.onrender.com/tasks/${id}`, {
       method: 'PUT'
     });
     fetchTasks(); // ดึงข้อมูลใหม่
@@ -38,7 +38,7 @@ const toggleTaskStatus = async (id) => {
 // 3. ปรับเปลี่ยนโค้ดฟังก์ชัน deleteTask ให้ลบข้อมูลที่ Backend (DELETE)
 const deleteTask = async (id) => {
   try {
-    await fetch(`http://127.0.0.1:3000/tasks/${id}`, {
+    await fetch(`https://cpe-task-backend.onrender.com/tasks/${id}`, {
       method: 'DELETE'
     });
     fetchTasks(); // ดึงข้อมูลใหม่
@@ -53,7 +53,7 @@ const fetchTasks = async () => {
     taskListElement.innerHTML = "<h3 style='text-align: center;'> กำลังดึงข้อมูลจากเซิร์ฟเวอร์...</h3>";
     
     // เปลี่ยน URL ไปที่เซิร์ฟเวอร์ Backend
-    const response = await fetch('http://127.0.0.1:3000/tasks');
+    const response = await fetch('https://cpe-task-backend.onrender.com/tasks');
     const data = await response.json();
     
     tasks = data.map(item => {
